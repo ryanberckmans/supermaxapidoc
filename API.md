@@ -1,4 +1,5 @@
-Supermax API v1
+**Supermax API v1**
+
 This document is not finalized and subjected to change quite frequently. If you have any questions, email hello@supermax.cool or holla at @huangkuan, @helixy on Twitter.
 
 The base url of all the APIs is:
