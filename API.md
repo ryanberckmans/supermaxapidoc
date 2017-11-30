@@ -64,3 +64,32 @@ curl -X POST https://app.supermax.cool/supermax/api/v1/blocks -H 'authorization:
 ```
 * **Notes:**
 You can use either use startBlockNumber/endBlockNumber or startDate/endDate. If you use both, the api will choose startDate/endDate as default.
+----------
+2. Get a list of supported erc20 tokens.
+* **Http request:** POST `/tokens`
+* **Parameters:** `None`
+* **Response:** 
+```json
+{
+  "tokens": [{
+              "_id": "5a1b99d999d437329bdd21f8",
+              "address": "0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
+              "currencyCode": "BNT",
+              "name": "Bancor Network",
+              "description": "Bancor Protocol is a standard for a new generation of cryptocurrencies called Smart Tokens"
+            },
+            {
+              "_id": "5a1b99d999d437329bdd21f8",
+              "address": "0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
+              "currencyCode": "BNT",
+              "name": "Bancor Network",
+              "description": "Bancor Protocol is a standard for a new generation of cryptocurrencies called Smart Tokens"
+            }]
+}
+```
+* **Example:**
+```
+curl -X POST https://app.supermax.cool/supermax/api/v1/tokens  -H 'authorization: hello@world.com:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJlbWFpbCI6ImhlbGxvQHdvcmxkLmNvbSIsIl9pZCI6IjVhMTBjMzllNTQ2ZWZiMDc1MWEwYWUzYyIsImlhdCI6MTUxMTA1MDE4NH0.oIe738oMRmez_NI5U4-w9L0LiCjkssJ6f9KtbX9_N_k' -H 'cache-control: no-cache' -H 'content-type: application/json'
+```
+* **Notes:**
+The list will keep growing. If you want us to include your token, send us an email.
