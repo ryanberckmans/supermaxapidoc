@@ -95,7 +95,7 @@ curl -X POST https://app.supermax.cool/supermax/api/v1/tokens  -H 'authorization
 * **Notes:**
 We will keep updating this list. If you want us to include your token, send us an email.
 ----------
-3. List all transactions of a given token.
+3. List all the transactions of a given token.
 * **Http request:** POST `/tokens/:tokenAddress/txs` 
 * **Parameters:**
 ```json
@@ -107,25 +107,16 @@ We will keep updating this list. If you want us to include your token, send us a
 * **Response:** 
 ```json
 {
-  "txs_log": [{
-            "_id": "5a20a964b9f0ed44960bdde3",
-            "blockHash": "0x2b80c3fa859b26cad48dbf024efe1502432ea48921c245d04263cd65ce043829",
-            "blockNumber": 4653182,
-            "blockTimestamp": 1512089951,
-            "transactionFrom": "0xEd1C1F10f87656e7DEb155422e18e42F8f4D7946",
-            "transactionTo": "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
-            "transactionHash": "0x5165657efba213f0195871b618eeed16d9279ad96c5b5e05296dff2f878e05a6",
-            "logAddress": "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
-            "logData": "0x000000000000000000000000000000000000000000000003a8c02c5ea2de0000",
-            "logIndex": 2,
-            "logTopics": [
-                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-                "0x000000000000000000000000ed1c1f10f87656e7deb155422e18e42f8f4d7946",
-                "0x0000000000000000000000007fe2b88f2e4858de375832fbf54ac7cf1a78ca51"
-            ],
-            "logId": "log_2eb69e60",
-            "txlogHash": "0x5165657efba213f0195871b618eeed16d9279ad96c5b5e05296dff2f878e05a6_log_2eb69e60",
-            "quantity": "67.5"
+  "txs": [{
+          "_id":"5a18b26788776d13d99ac67a",
+          "blockHash":"0xdf59ba4b93175cc2112aa9f5a31d2f85349ee0ff3d58c230701a950c035827e1",
+          "blockNumber":4616114,
+          "blockTimestamp":1511567968,
+          "transactionHash":"0x473d37964e903e93ea25200822208c8bde1d5755e2ec2d418d754968e39bbd1d",
+          "quantity":"299.99",
+          "tokenAddress":"0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
+          "fromWallet":"0x7fe2b88f2e4858de375832fbf54ac7cf1a78ca51",
+          "toWallet":"0x835779b32e558a3fdef94d443523b984e3d1551"
         }]
 
 }
