@@ -5,7 +5,7 @@ This document is not finalized and subjected to change quite frequently. If you 
 The base url of all the APIs is:
 https://app.supermax.cool/supermax/api/v1
 
-All the data after block 4605000 or Nov 23rd(UTC) is fully synced in our database. We're in the process of adding historical data into our database as well.
+All the data after block 4604000 or Nov 23rd(UTC) is fully synced in our database. We're in the process of adding historical data into our database as well.
 
 ----------
 1. List all the blocks based on given parameters. You can filter the result by date range, transaction counts per block and miner. Amazing, right?! :)
@@ -64,9 +64,43 @@ curl -X POST https://app.supermax.cool/supermax/api/v1/blocks -H 'authorization:
 ```
 * **Notes:**
 You can use either use startBlockNumber/endBlockNumber or startDate/endDate. If you use both, the api will choose startDate/endDate as default.
-
 ----------
-2. Get a list of supported erc20 tokens.
+2. List all the transactions of a given token. People could use this API to analyze the past and ongoing ICOs, to track the distribution of their own tokens within their network. We're also thinking about having a push service where any time there is a new transaction of your token, the data will be pushed to a webhook defined by you. Get in touch if you dig it!.
+
+* **Http request:** POST `/tokens/:tokenAddress/txs` 
+* **Parameters:**
+```json
+{
+  "startDate":"2017-11-24",
+  "endDate":"2017-11-25",
+  "quantity": {"$gte":3.0},
+  "fromWallet":"0x7fe2b88f2e4858de375832fbf54ac7cf1a78ca51",
+  "toWallet": "0x835779b32e558a3fdef94d443523b984e3d1551",
+}
+```
+* **Response:** 
+```json
+{
+  "txs": [{
+          "_id":"5a18b26788776d13d99ac67a",
+          "blockHash":"0xdf59ba4b93175cc2112aa9f5a31d2f85349ee0ff3d58c230701a950c035827e1",
+          "blockNumber":4616114,
+          "blockTimestamp":1511567968,
+          "transactionHash":"0x473d37964e903e93ea25200822208c8bde1d5755e2ec2d418d754968e39bbd1d",
+          "quantity":"299.99",
+          "tokenAddress":"0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
+          "fromWallet":"0x7fe2b88f2e4858de375832fbf54ac7cf1a78ca51",
+          "toWallet":"0x835779b32e558a3fdef94d443523b984e3d1551"
+        }]
+
+}
+```
+* **Example:** 
+```
+curl -X POST https://app.supermax.cool/supermax/api/v1/tokens/0xa74476443119A942dE498590Fe1f2454d7D4aC0d/txs -H 'authorization: hello@world.com:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxvQHdvcmxkLmNvbSIsIl9pZCI6IjVhMTBjMzllNTQ2ZWZiMDc1MWEwYWUzYyIsImlhdCI6MTUxMTA1MDE4NH0.oIe738oMRmez_NI5U4-w9L0LiCjkssJ6f9KtbX9_N_k' -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{"startDate":"2017-11-24","endDate":"2017-11-25"}'
+```
+----------
+3. Get a list of supported erc20 tokens.
 * **Http request:** POST `/tokens`
 * **Parameters:** `None`
 * **Response:** 
@@ -94,34 +128,3 @@ curl -X POST https://app.supermax.cool/supermax/api/v1/tokens  -H 'authorization
 ```
 * **Notes:**
 We will keep updating this list. If you want us to include your token, send us an email.
-----------
-3. List all the transactions of a given token.
-* **Http request:** POST `/tokens/:tokenAddress/txs` 
-* **Parameters:**
-```json
-{
-  "startDate":"2017-11-24",
-  "endDate":"2017-11-25"
-}
-```
-* **Response:** 
-```json
-{
-  "txs": [{
-          "_id":"5a18b26788776d13d99ac67a",
-          "blockHash":"0xdf59ba4b93175cc2112aa9f5a31d2f85349ee0ff3d58c230701a950c035827e1",
-          "blockNumber":4616114,
-          "blockTimestamp":1511567968,
-          "transactionHash":"0x473d37964e903e93ea25200822208c8bde1d5755e2ec2d418d754968e39bbd1d",
-          "quantity":"299.99",
-          "tokenAddress":"0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
-          "fromWallet":"0x7fe2b88f2e4858de375832fbf54ac7cf1a78ca51",
-          "toWallet":"0x835779b32e558a3fdef94d443523b984e3d1551"
-        }]
-
-}
-```
-* **Example:** 
-```
-curl -X POST https://app.supermax.cool/supermax/api/v1/tokens/0xa74476443119A942dE498590Fe1f2454d7D4aC0d/txs -H 'authorization: hello@world.com:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxvQHdvcmxkLmNvbSIsIl9pZCI6IjVhMTBjMzllNTQ2ZWZiMDc1MWEwYWUzYyIsImlhdCI6MTUxMTA1MDE4NH0.oIe738oMRmez_NI5U4-w9L0LiCjkssJ6f9KtbX9_N_k' -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{"startDate":"2017-11-24","endDate":"2017-11-25"}'
-```
