@@ -5,7 +5,7 @@ This document is not finalized and subjected to change quite frequently. If you 
 The base url of all the APIs is:
 https://app.supermax.cool/supermax/api/v1
 
-All the data after block 4600000 or Nov 22rd(UTC) is fully synced in our database. We're in the process of adding historical data into our database as well.
+All the data after block 4440000 or Oct 28th(UTC) is fully synced in our database. We're in the process of adding historical data into our database as well.
 
 ----------
 1. List all the blocks based on given parameters. You can filter the result by date range, transaction counts per block and miner. Amazing, right?! :)
